@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background: #000;
+}
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes floatDown {
+  0%   { transform: translateY(-60px) rotate(0deg);   opacity: 0;    }
+  10%  { opacity: 0.09; }
+  90%  { opacity: 0.09; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0;    }
+}
+
+@keyframes avatarPulse {
+  0%, 100% { transform: scale(1);    }
+  50%       { transform: scale(1.05); }
+}
+
+@keyframes glitch {
+  0%,  88%, 100% { transform: translate(0);       }
+  90%            { transform: translate(-3px, 1px); }
+  93%            { transform: translate(3px, -1px); }
+  96%            { transform: translate(-2px, 2px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-7px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes scrollUnroll {
+  from { opacity: 0; transform: scaleY(0.2) translateY(-20px); }
+  to   { opacity: 1; transform: scaleY(1)   translateY(0);     }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 3px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #FF6B9D; border-radius: 2px; }
