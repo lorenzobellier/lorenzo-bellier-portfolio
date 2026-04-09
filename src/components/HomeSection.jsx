@@ -33,7 +33,7 @@ export default function HomeSection({ theme, setSection }) {
       </div>
 
       <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"clamp(0.7rem,1.7vw,0.92rem)", color:`${t.color}75`, letterSpacing:"0.22em", textTransform:"uppercase", marginBottom:"20px", zIndex:1 }}>
-        19 ans · Paris · Bac SIO SISR · Futur cyber-ninja 🥷
+        19 ans · Paris · BTS SIO SISR · Futur cyber-ninja 🥷
       </div>
 
       <div style={{ maxWidth:"540px", fontFamily:"'Noto Serif JP',serif", fontSize:"0.88rem", color:"#ffffff65", lineHeight:1.9, minHeight:"50px", zIndex:1, marginBottom:"36px" }}>
