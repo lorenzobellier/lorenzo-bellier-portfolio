@@ -85,7 +85,7 @@ export default function DiplomasSection({ theme }) {
                     <span style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.78rem", color:"#ffffffaa", lineHeight:1.5 }}>{row.val}</span>
                   </div>
                 ))}
-                {active.status==="partial" && <div style={{ marginTop:"12px", padding:"10px 14px", borderRadius:"6px", background:"rgba(255,107,0,0.07)", border:"1px solid rgba(255,107,0,0.25)", color:"#FFB347", fontSize:"0.78rem", fontFamily:"'Noto Serif JP',serif", lineHeight:1.7 }}>💡 Arc interrompu mais acquis réinvestis dans le Bac SIO actuel.</div>}
+                {active.status==="partial" && <div style={{ marginTop:"12px", padding:"10px 14px", borderRadius:"6px", background:"rgba(255,107,0,0.07)", border:"1px solid rgba(255,107,0,0.25)", color:"#FFB347", fontSize:"0.78rem", fontFamily:"'Noto Serif JP',serif", lineHeight:1.7 }}>💡 Arc interrompu mais acquis réinvestis dans le BTS SIO actuel.</div>}
                 {active.status==="current" && <div style={{ marginTop:"12px", padding:"10px 14px", borderRadius:"6px", background:`${active.stripColor}08`, border:`1px solid ${active.stripColor}28`, color:active.stripColor, fontSize:"0.78rem", fontFamily:"'Noto Serif JP',serif", lineHeight:1.7 }}>🎯 Arc en cours — recherche active d'alternance. La suite s'écrit maintenant.</div>}
               </div>
             </div>
@@ -95,7 +95,7 @@ export default function DiplomasSection({ theme }) {
 
       <div style={{ marginTop:"28px", padding:"20px 26px", borderRadius:"12px", border:`2px dashed ${t.color}30`, background:`${t.color}04`, textAlign:"center" }}>
         <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.95rem", color:t.color, marginBottom:"5px" }}>🔍 En recherche d'alternance</div>
-        <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.8rem", color:"#ffffff50", lineHeight:1.8 }}>Bac SIO SISR · Cybersécurité / Réseau / Sysadmin · Paris & Île-de-France / Rouen</div>
+        <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.8rem", color:"#ffffff50", lineHeight:1.8 }}>BTS SIO SISR · Cybersécurité / Réseau / Sysadmin · Paris & Île-de-France / Rouen</div>
       </div>
     </div>
   );
