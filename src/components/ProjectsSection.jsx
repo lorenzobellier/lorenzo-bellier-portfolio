@@ -90,8 +90,14 @@ export default function ProjectsSection({ theme }) {
               </div>
               <a href={active.link} target="_blank" rel="noopener noreferrer"
                 style={{ display:"inline-flex", alignItems:"center", gap:"6px", padding:"9px 18px", borderRadius:"20px", border:`1px solid ${active.coverAccent}`, color:active.coverAccent, fontFamily:"'Noto Serif JP',serif", fontSize:"0.8rem", textDecoration:"none", background:`${active.coverAccent}12` }}>
-                🐙 Voir sur GitHub →
+                {active.link?.includes("github.com") ? "🐙" : "📎"} {active.linkLabel || "Voir sur GitHub"} →
               </a>
+              {active.proofLinks?.map(proof => (
+                <a key={proof.href} href={proof.href} target="_blank" rel="noopener noreferrer"
+                  style={{ display:"block", marginTop:"10px", color:`${active.coverAccent}bb`, fontFamily:"'Noto Serif JP',serif", fontSize:"0.76rem", textDecoration:"none" }}>
+                  📎 {proof.label} →
+                </a>
+              ))}
             </div>
             <div>
               <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.75rem", color:`${active.coverAccent}70`, letterSpacing:"0.2em", textTransform:"uppercase", marginBottom:"14px" }}>🎵 Tracklist</div>

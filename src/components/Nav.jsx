@@ -7,14 +7,14 @@ export function Nav({ active, setSection }) {
   return (
     <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:100, display:"flex", justifyContent:"space-between", alignItems:"center", padding:"12px 28px", background:"rgba(0,0,0,0.82)", backdropFilter:"blur(20px)", borderBottom:`1px solid ${t.color}22` }}>
       <div onClick={() => setSection("home")} style={{ cursor:"pointer", display:"flex", alignItems:"center", gap:"10px" }}>
-        <span style={{ fontSize:"1.7rem", filter:`drop-shadow(0 0 10px ${t.color})` }}>{t.kanji}</span>
+        <span style={{ fontSize:"1.7rem", filter:`drop-shadow(0 0 1px ${t.color})` }}>{t.kanji}</span>
         <div>
           <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.95rem", color:t.color, letterSpacing:"0.12em", fontWeight:700 }}>Lorenzo Bellier</div>
-          <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.6rem", color:`${t.color}60`, letterSpacing:"0.2em", textTransform:"uppercase" }}>Portfolio</div>
+          <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.6rem", color:`${t.color}`, letterSpacing:"0.2em", textTransform:"uppercase" }}>Portfolio</div>
         </div>
       </div>
       <div style={{ display:"flex", gap:"5px", flexWrap:"wrap", justifyContent:"flex-end" }}>
-        {[["home","Accueil"],["about","À Propos"],["diplomes","Diplômes"],["skills","Compétences"],["projets","Projets"],["contact","Contact"]].map(([s,label]) => (
+        {[["home","Accueil"],["about","À Propos"],["diplomes","Diplômes"],["skills","Compétences"],["projets","Projets"],["bts","Dossier BTS"],["veille","Veille"],["contact","Contact"]].map(([s,label]) => (
           <button key={s} onClick={() => setSection(s)}
             onMouseEnter={() => setHov(s)} onMouseLeave={() => setHov(null)}
             style={{ background:hov===s?`${t.color}20`:"transparent", border:`1px solid ${hov===s?t.color:t.color+"30"}`, color:t.color, padding:"5px 11px", borderRadius:"20px", cursor:"pointer", fontFamily:"'Noto Serif JP',serif", fontSize:"0.7rem", letterSpacing:"0.08em", textTransform:"uppercase", transition:"all 0.25s" }}>

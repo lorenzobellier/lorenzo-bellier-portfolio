@@ -8,6 +8,8 @@ import DiplomasSection from "./components/DiplomasSection";
 import SkillsSection  from "./components/SkillsSection";
 import ProjectsSection from "./components/ProjectsSection";
 import ContactSection from "./components/ContactSection";
+import VeilleSection  from "./components/VeilleSection";
+import BtsPortfolioSection from "./components/BtsPortfolioSection";
 import PortfolioMobile from "./portfolio-mobile.jsx"; // Import du fichier mobile
 import "./index.css";
 
@@ -42,6 +44,8 @@ export default function App() {
       case "diplomes": return <DiplomasSection theme={theme} />;
       case "skills":   return <SkillsSection   theme={theme} />;
       case "projets":  return <ProjectsSection theme={theme} />;
+      case "veille":   return <VeilleSection   theme={theme} />;
+      case "bts":      return <BtsPortfolioSection theme={theme} />;
       case "contact":  return <ContactSection  theme={theme} />;
       default:         return <HomeSection theme={theme} setSection={setSection} />;
     }
@@ -55,7 +59,7 @@ export default function App() {
       <main style={{ position:"relative", zIndex:1 }}>
         {renderSection()}
       </main>
-      <footer style={{ textAlign:"center", padding:"15px", fontFamily:"'Noto Serif JP',serif", fontSize:0.68, color:"#ffffff18", borderTop:`1px solid ${t.color}10`, position:"relative", zIndex:1 }}>
+      <footer style={{ textAlign:"center", padding:"15px", fontFamily:"'Noto Serif JP',serif", fontSize:"0.68rem", color:"#ffffff18", borderTop:`1px solid ${t.color}10`, position:"relative", zIndex:1 }}>
         Lorenzo Bellier · {new Date().getFullYear()} · {t.name}
       </footer>
     </div>

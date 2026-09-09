@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { THEMES } from "../data/themes";
 import { SectionTitle } from "./UI";
-import portrait from "../assets/portrait.jpg";
+import portrait from "../assets/portrait.png";
 
 export default function AboutSection({ theme }) {
   const t = THEMES[theme];
@@ -9,10 +9,10 @@ export default function AboutSection({ theme }) {
   const [activeCard, setActiveCard] = useState(null);
 
   const cards = [
-    { icon:"⚔️", title:"La voie du guerrier",  text:"19 ans, Paris. Bac SIO SISR à My Digital School. Cherche une alternance pour forger ses compétences en cyber & réseau.", color:THEMES.japon.color, detail:"Actuellement en 1ère année de Bac SIO SISR à My Digital School. Rythme alterné : une semaine école, une semaine à la maison. Recherche active d'une alternance en cybersécurité ou réseau en Île-de-France." },
-    { icon:"📖", title:"L'Otaku codeur",        text:"Mangas, manhwa, manhua, novels, anime VO, donghua... Immersion totale dans les cultures asiatiques.", color:THEMES.manga.color, detail:"Consommation quotidienne de contenu asiatique en VO et ENG sub. Mangas, manhwa (coréen), manhua (chinois), light novels, anime VO, donghua (animation chinoise), K-drama, J-drama." },
+    { icon:"⚔️", title:"La voie du guerrier",  text:"Étudiant en BTS SIO SISR à My Digital School. Cherche une alternance pour forger ses compétences en cyber & réseau.", color:THEMES.japon.color, detail:"Actuellement en BTS SIO SISR à My Digital School. Rythme alterné : une semaine école, une semaine à la maison. Recherche active d'une alternance en cybersécurité ou réseau en Île-de-France." },
+    { icon:"📖", title:"L'Otaku codeur",        text:"Mangas, manhwa, manhua, novels, anime VO, donghua... Immersion totale dans les cultures asiatiques.", color:THEMES.manga.color, detail:"Consommation quotidienne de contenu asiatique en VO et ENG sub. Mangas, manhwa (coréen), manhua (chinois), light novels, anime VO, donghua (animation chinoise), K-drama, J-drama, C-drama." },
     { icon:"🐉", title:"Ambition Dragon",       text:"Objectif : vivre et travailler en Asie. Japonais en apprentissage actif.", color:THEMES.chine.color, detail:"Plan en 3 étapes : maîtriser le japonais d'abord (objectif principal), puis le coréen et enfin le chinois. Ambition de partir étudier en Asie si possible." },
-    { icon:"🛡️", title:"Red & Blue Team",       text:"Cybersécurité comme futur métier. Linux, réseau, scripts bash. Niveau Genin — progression constante.", color:THEMES.coree.color, detail:"Intérêt fort pour les deux côtés : Red Team (offensif) et Blue Team (défensif). Pratique via projets GitHub : linux-admin-basics, network-security-lab, incident-response-simulation." },
+    { icon:"🛡️", title:"Red & Blue Team",       text:"Cybersécurité comme futur métier. Linux, réseau, scripts Bash et virtualisation. En progression constante.", color:THEMES.coree.color, detail:"Intérêt fort pour les deux côtés : Red Team (offensif) et Blue Team (défensif). Pratique via projets GitHub : linux-admin-basics, network-security-lab, incident-response-simulation." },
   ];
 
   return (
@@ -51,9 +51,9 @@ export default function AboutSection({ theme }) {
             <div style={{ padding:"20px 18px", borderTop:`2px solid ${t.color}40` }}>
               <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"1rem", fontWeight:900, color:t.color, marginBottom:"14px" }}>Lorenzo Bellier</div>
               {[
-                { label:"Âge",       val:"19 ans",                icon:"🎂" },
+                { label:"Âge",       val:`${new Date().getFullYear() - 2006} ans`,  icon:"🎂" },
                 { label:"Ville",     val:"Paris, France",          icon:"🗼" },
-                { label:"Formation", val:"Bac SIO SISR",           icon:"🎓" },
+                { label:"Formation", val:"BTS SIO SISR",           icon:"🎓" },
                 { label:"École",     val:"My Digital School",      icon:"🏫" },
                 { label:"Statut",    val:"Cherche alternance",     icon:"🔍" },
                 { label:"Objectif",  val:"Cybersécurité + Asie",   icon:"🐉" },

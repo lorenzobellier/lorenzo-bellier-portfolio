@@ -27,16 +27,7 @@ function ScrollModal({ scroll, onClose }) {
             <span style={{ fontSize:"2rem", filter:`drop-shadow(0 0 10px ${scroll.color})` }}>{scroll.icon}</span>
             <div>
               <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"1.25rem", fontWeight:900, color:scroll.color }}>{scroll.name}</div>
-              <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.7rem", color:`${scroll.color}65`, letterSpacing:"0.18em" }}>Rang : {scroll.levelName}</div>
-            </div>
-          </div>
-          <div style={{ marginBottom:"16px", position:"relative", zIndex:1 }}>
-            <div style={{ display:"flex", justifyContent:"space-between", marginBottom:"5px" }}>
-              <span style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.72rem", color:"#c8a87055" }}>Maîtrise</span>
-              <span style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.72rem", color:scroll.color }}>{scroll.level}%</span>
-            </div>
-            <div style={{ height:"5px", background:"rgba(255,255,255,0.07)", borderRadius:"3px", overflow:"hidden" }}>
-              <div style={{ height:"100%", width:`${scroll.level}%`, background:`linear-gradient(90deg,${scroll.color}70,${scroll.color})`, borderRadius:"3px", boxShadow:`0 0 8px ${scroll.color}` }} />
+              <div style={{ display:"inline-block", marginTop:"5px", padding:"3px 12px", borderRadius:"4px", background:`${scroll.levelColor || scroll.color}20`, border:`1px solid ${scroll.levelColor || scroll.color}55`, fontFamily:"'Noto Serif JP',serif", fontSize:"0.7rem", fontWeight:700, color:scroll.levelColor || scroll.color, letterSpacing:"0.1em" }}>{scroll.levelName}</div>
             </div>
           </div>
           <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.85rem", color:"#c8a870bb", lineHeight:1.85, marginBottom:"16px", position:"relative", zIndex:1 }}>{scroll.desc}</div>
@@ -59,7 +50,6 @@ function ScrollModal({ scroll, onClose }) {
 
 function ScrollItem({ scroll, onOpen }) {
   const [hov, setHov] = useState(false);
-  const dots = Math.ceil(scroll.level / 20);
   return (
     <div onClick={onOpen} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
       style={{ position:"relative", width:"82px", cursor:"pointer", display:"flex", flexDirection:"column", alignItems:"center", gap:"5px", transform:hov?"translateY(-9px) scale(1.06)":"translateY(0) scale(1)", transition:"all 0.3s cubic-bezier(0.34,1.56,0.64,1)" }}>
@@ -67,9 +57,7 @@ function ScrollItem({ scroll, onOpen }) {
       <div style={{ width:"62px", height:"75px", background:hov?`linear-gradient(180deg,${scroll.color}15,${scroll.color}25,${scroll.color}15)`:"linear-gradient(180deg,#2d1600,#3a1c00,#2d1600)", border:`1px solid ${scroll.color}${hov?"55":"28"}`, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:"6px", position:"relative", overflow:"hidden", boxShadow:hov?`0 0 20px ${scroll.color}40`:"inset 0 2px 8px rgba(0,0,0,0.4)", transition:"all 0.3s" }}>
         {[...Array(5)].map((_,i) => <div key={i} style={{ position:"absolute", left:"6px", right:"6px", top:`${12+i*16}%`, height:"1px", background:`${scroll.color}12`, pointerEvents:"none" }} />)}
         <span style={{ fontSize:"1.2rem", filter:hov?`drop-shadow(0 0 8px ${scroll.color})`:"none", transition:"all 0.3s", zIndex:1 }}>{scroll.icon}</span>
-        <div style={{ display:"flex", gap:"3px", zIndex:1 }}>
-          {[...Array(5)].map((_,i) => <div key={i} style={{ width:"5px", height:"5px", borderRadius:"50%", background:i<dots?scroll.color:`${scroll.color}22`, transition:"all 0.3s" }} />)}
-        </div>
+        <div style={{ zIndex:1, padding:"2px 4px", borderRadius:"3px", background:`${scroll.levelColor || scroll.color}20`, border:`1px solid ${scroll.levelColor || scroll.color}50`, fontFamily:"'Noto Serif JP',serif", fontSize:"0.42rem", fontWeight:700, color:scroll.levelColor || scroll.color, textAlign:"center", lineHeight:1.3, maxWidth:"54px" }}>{scroll.levelName}</div>
       </div>
       <div style={{ width:"62px", height:"9px", background:`linear-gradient(90deg,${scroll.color}35,${scroll.color}70,${scroll.color}35)`, borderRadius:"1px 1px 3px 3px", border:`1px solid ${scroll.color}55`, boxShadow:hov?`0 0 10px ${scroll.color}`:"none", transition:"all 0.3s" }} />
       <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.65rem", color:hov?scroll.color:"#c8a87065", textAlign:"center", lineHeight:1.3, transition:"color 0.3s", maxWidth:"76px" }}>{scroll.name}</div>
