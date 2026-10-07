@@ -14,7 +14,7 @@ export function Nav({ active, setSection }) {
         </div>
       </div>
       <div style={{ display:"flex", gap:"5px", flexWrap:"wrap", justifyContent:"flex-end" }}>
-        {[["home","Accueil"],["about","À Propos"],["diplomes","Diplômes"],["skills","Compétences"],["projets","Projets"],["bts","Dossier BTS"],["veille","Veille"],["contact","Contact"]].map(([s,label]) => (
+        {[["home","Accueil"],["about","À Propos"],["bts","BTS"],["diplomes","Diplômes"],["skills","Compétences"],["projets","Projets"],["epreuve","Épreuve E5/E6"],["veille","Veille"],["contact","Contact"]].map(([s,label]) => (
           <button key={s} onClick={() => setSection(s)}
             onMouseEnter={() => setHov(s)} onMouseLeave={() => setHov(null)}
             style={{ background:hov===s?`${t.color}20`:"transparent", border:`1px solid ${hov===s?t.color:t.color+"30"}`, color:t.color, padding:"5px 11px", borderRadius:"20px", cursor:"pointer", fontFamily:"'Noto Serif JP',serif", fontSize:"0.7rem", letterSpacing:"0.08em", textTransform:"uppercase", transition:"all 0.25s" }}>
