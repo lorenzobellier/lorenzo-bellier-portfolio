@@ -9,7 +9,8 @@ import SkillsSection  from "./components/SkillsSection";
 import ProjectsSection from "./components/ProjectsSection";
 import ContactSection from "./components/ContactSection";
 import VeilleSection  from "./components/VeilleSection";
-import BtsPortfolioSection from "./components/BtsPortfolioSection";
+import BtsSection from "./components/BtsSection";
+import EpreuveSection from "./components/EpreuveSection";
 import PortfolioMobile from "./portfolio-mobile.jsx"; // Import du fichier mobile
 import "./index.css";
 
@@ -45,7 +46,8 @@ export default function App() {
       case "skills":   return <SkillsSection   theme={theme} />;
       case "projets":  return <ProjectsSection theme={theme} />;
       case "veille":   return <VeilleSection   theme={theme} />;
-      case "bts":      return <BtsPortfolioSection theme={theme} />;
+      case "bts":      return <BtsSection      theme={theme} />;
+      case "epreuve":  return <EpreuveSection  theme={theme} />;
       case "contact":  return <ContactSection  theme={theme} />;
       default:         return <HomeSection theme={theme} setSection={setSection} />;
     }
