@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { THEMES } from "./data/themes";
-import { PROJECTS } from "./data/projects";
+import { PROJECTS, PROJECT_CATEGORIES } from "./data/projects";
 import { DIPLOMAS } from "./data/diplomas";
 import { SHELVES } from "./data/skills";
 import { VEILLE } from "./data/veille";
-import { BTS_CHECKLIST, BTS_IDENTITY, BTS_SITUATIONS } from "./data/btsPortfolio";
+import { BTS_OVERVIEW, BTS_OPTIONS, BTS_BLOCKS, BTS_EXAMS, BTS_TRAINING } from "./data/bts";
+import { EPREUVE_IDENTITY, COMPETENCES_REFERENTIEL, TABLEAU_SYNTHESE_FILE, BTS_SITUATIONS, BTS_CHECKLIST } from "./data/epreuve";
 import portrait from "./assets/portrait.png";
 
 // ─── NAV BURGER ───────────────────────────────────────────────────────────────
