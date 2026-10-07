@@ -1,0 +1,113 @@
+// Données de l'épreuve orale E5 (tableau de synthèse) et de l'épreuve E6.
+// Les éléments « À joindre » correspondent à des pièces réelles ou signées : à ne jamais inventer.
+
+export const EPREUVE_IDENTITY = {
+  name: "Lorenzo Bellier",
+  option: "BTS SIO - option SISR",
+  school: "My Digital School, Paris",
+  session: "À renseigner",
+};
+
+// Les 6 compétences du référentiel évaluées à l'épreuve E5 (avec activités associées)
+export const COMPETENCES_REFERENTIEL = [
+  {
+    id: "patrimoine",
+    title: "Gérer le patrimoine informatique",
+    items: [
+      "Recenser et identifier les ressources numériques",
+      "Exploiter des référentiels, normes et standards",
+      "Mettre en place et vérifier les niveaux d'habilitation",
+      "Vérifier la continuité d'un service informatique",
+      "Gérer des sauvegardes",
+      "Vérifier le respect des règles d'utilisation des ressources numériques",
+    ],
+  },
+  {
+    id: "incidents",
+    title: "Répondre aux incidents et aux demandes d'assistance et d'évolution",
+    items: [
+      "Collecter, suivre et orienter des demandes",
+      "Traiter des demandes concernant les services réseau et système, applicatifs",
+      "Traiter des demandes concernant les applications",
+    ],
+  },
+  {
+    id: "presence-ligne",
+    title: "Développer la présence en ligne de l'organisation",
+    items: [
+      "Participer à la valorisation de l'image de l'organisation sur les médias numériques",
+      "Référencer les services en ligne et mesurer leur visibilité",
+      "Participer à l'évolution d'un site web exploitant les données de l'organisation",
+    ],
+  },
+  {
+    id: "mode-projet",
+    title: "Travailler en mode projet",
+    items: [
+      "Analyser les objectifs et modalités d'organisation d'un projet",
+      "Planifier les activités",
+      "Évaluer les indicateurs de suivi d'un projet et analyser les écarts",
+    ],
+  },
+  {
+    id: "mise-a-disposition",
+    title: "Mettre à disposition des utilisateurs un service informatique",
+    items: [
+      "Réaliser les tests d'intégration et d'acceptation d'un service",
+      "Déployer un service",
+      "Accompagner les utilisateurs dans la mise en place d'un service",
+    ],
+  },
+  {
+    id: "dev-pro",
+    title: "Organiser son développement professionnel",
+    items: [
+      "Mettre en place son environnement d'apprentissage personnel",
+      "Mettre en œuvre des outils et stratégies de veille informationnelle",
+      "Gérer son identité professionnelle",
+      "Développer son projet professionnel",
+    ],
+  },
+];
+
+// Le tableau de synthèse officiel (Annexe VI) est un document à part entière (fichier Excel signé),
+// pas recréé sur le site : voir TABLEAU_SYNTHESE_FILE ci-dessous.
+export const TABLEAU_SYNTHESE_FILE = {
+  label: "Tableau de synthèse officiel (Annexe VI)",
+  href: "/documents/Tableau_synthese_E5_Bellier_Lorenzo.xlsx",
+};
+
+export const BTS_SITUATIONS = [
+  {
+    id: "support",
+    title: "Application de support interne - VANDJI CONSULTING",
+    period: "Mai à août 2026",
+    context: "Stage : conception et développement d'une application web de support interne de type catalogue de services et tickets.",
+    role: "À préciser : vos responsabilités exactes, les décisions prises seul et les éléments réalisés en équipe.",
+    need: "Centraliser les demandes, suivre leur traitement et proposer une base de connaissances aux utilisateurs.",
+    results: "Application Laravel avec authentification multi-rôles, tickets, catalogue de services, base de connaissances et tableau de bord.",
+    skills: ["B1 - Répondre aux incidents et demandes", "B1 - Mettre à disposition un service", "B1 - Travailler en mode projet", "B3 - Garantir confidentialité, intégrité et disponibilité"],
+    evidence: ["À joindre : attestation de stage", "À joindre : cahier des charges ou expression du besoin", "À joindre : modèle de données et captures légendées", "À joindre : tests, procédure de recette et extrait Git", "À joindre : documentation utilisateur et technique"],
+  },
+  {
+    id: "hotel-les-cedres",
+    title: "Conception et sécurisation de l'infrastructure réseau de l'Hôtel Les Cèdres",
+    period: "1re année BTS SIO - date à préciser",
+    context: "Projet de synthèse réalisé sur Cisco Packet Tracer pour l'Hôtel Les Cèdres, composé de deux bâtiments à interconnecter et sécuriser.",
+    role: "Conception et déploiement de la maquette réseau, configuration des équipements Cisco et réalisation des tests de validation.",
+    need: "Segmenter les services de l'hôtel, assurer le routage contrôlé entre les VLAN, maintenir la connectivité WAN et limiter les accès non autorisés.",
+    results: "Infrastructure de 9 VLAN, routage inter-VLAN sur switch L3, EtherChannel LACP, ACL de filtrage, port security et administration SSH limitée au réseau technique. Les tests de connectivité et d'isolation sont consignés dans le compte-rendu.",
+    skills: ["B2 SISR - Concevoir une solution d'infrastructure", "B2 SISR - Installer, tester et déployer", "B2 SISR - Exploiter, dépanner et superviser", "B3 - Assurer la cybersécurité de sa spécialité"],
+    evidence: ["Compte_Rendu_Hotel_Les_Cedres.pdf", "HOTEL_BellierLorenzo_FINAL.pkt", "PROJET_Hotel_Sujet.pdf", "À ajouter : captures personnelles de la maquette et des tests"],
+  },
+];
+
+export const BTS_CHECKLIST = [
+  ["Tableau de synthèse officiel, une ligne par situation", "À faire"],
+  ["Attestations de stage / certificats de travail (10 semaines au total)", "À joindre"],
+  ["Attestation de réalité des activités, signée", "À joindre"],
+  ["CV à jour", "À joindre"],
+  ["Correspondance situations ↔ compétences des blocs 1, 2 et 3", "En cours"],
+  ["Deux réalisations SISR démontrables hors réseau de l'établissement", "À préparer"],
+  ["Copie hors-ligne testée (PDF ou clé USB)", "À préparer"],
+];
