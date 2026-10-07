@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { THEMES } from "./data/themes";
-import { PROJECTS } from "./data/projects";
+import { PROJECTS, PROJECT_CATEGORIES } from "./data/projects";
 import { DIPLOMAS } from "./data/diplomas";
 import { SHELVES } from "./data/skills";
 import { VEILLE } from "./data/veille";
-import { BTS_CHECKLIST, BTS_IDENTITY, BTS_SITUATIONS } from "./data/btsPortfolio";
+import { BTS_OVERVIEW, BTS_OPTIONS, BTS_BLOCKS, BTS_EXAMS, BTS_TRAINING } from "./data/bts";
+import { EPREUVE_IDENTITY, COMPETENCES_REFERENTIEL, TABLEAU_SYNTHESE_FILE, BTS_SITUATIONS, BTS_CHECKLIST } from "./data/epreuve";
 import portrait from "./assets/portrait.png";
 
 // ─── NAV BURGER ───────────────────────────────────────────────────────────────
@@ -14,10 +15,11 @@ function BurgerNav({ theme, t, setTheme }) {
   const links = [
     { id:"home",     label:"🏠 Accueil" },
     { id:"about",    label:"👤 À Propos" },
+    { id:"bts",      label:"🏫 Le BTS SIO" },
     { id:"diplomes", label:"📚 Diplômes" },
     { id:"skills",   label:"📜 Compétences" },
     { id:"projets",  label:"⚔️ Projets" },
-    { id:"bts",      label:"📋 Dossier BTS" },
+    { id:"epreuve",  label:"📋 Épreuve E5/E6" },
     { id:"veille",   label:"🃏 Veille" },
     { id:"contact",  label:"✉️ Contact" },
   ];
@@ -228,6 +230,58 @@ function SkillBadge({ skill }) {
   );
 }
 
+// ─── LISTE PROJETS AVEC FILTRES PRO / SCOLAIRE / PERSO ───────────────────────
+function MobileProjectsList({ t }) {
+  const [filter, setFilter] = useState("all");
+  const filtered = filter === "all" ? PROJECTS : PROJECTS.filter(p => p.category === filter);
+  const tabs = [{ id:"all", label:"Tous", icon:"✦" }, ...PROJECT_CATEGORIES];
+
+  return (
+    <>
+      <div style={{ display:"flex", gap:"6px", flexWrap:"wrap", marginBottom:"16px" }}>
+        {tabs.map(tab => (
+          <button key={tab.id} onClick={() => setFilter(tab.id)}
+            style={{ background:filter===tab.id?`${t.color}22`:"transparent", border:`1px solid ${filter===tab.id?t.color:t.color+"35"}`, color:filter===tab.id?t.color:"#ffffffaa", padding:"5px 12px", borderRadius:"16px", cursor:"pointer", fontFamily:"'Noto Serif JP',serif", fontSize:"0.7rem" }}>
+            {tab.icon} {tab.label}
+          </button>
+        ))}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        {filtered.length === 0 ? (
+          <div style={{ textAlign:"center", padding:"24px 0", color:"#ffffff50", fontSize:"0.8rem" }}>Aucun projet dans cette catégorie pour le moment.</div>
+        ) : filtered.map((p) => (
+          <div key={p.name} style={{
+            background: p.coverBg || "rgba(255,255,255,0.04)", borderRadius: "14px", padding: "16px",
+            border: `1px solid ${p.coverAccent}44`,
+            position: "relative",
+          }}>
+            {p.isFeatured && (
+              <div style={{ position: "absolute", top: "12px", right: "12px", padding: "2px 10px", borderRadius: "4px", background: `${p.coverAccent}30`, border: `1px solid ${p.coverAccent}60`, fontSize: "0.6rem", color: p.coverAccent, fontWeight: 700 }}>
+                🏢 STAGE
+              </div>
+            )}
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
+              <span style={{ fontSize: "1.3rem" }}>{p.icon}</span>
+              <div>
+                <div style={{ fontWeight: 700, fontSize: "0.88rem" }}>{p.albumTitle}</div>
+                <div style={{ fontSize: "0.65rem", color: `${p.coverAccent}aa` }}>{p.albumSub}</div>
+              </div>
+            </div>
+            <p style={{ color: "#ffffffaa", fontSize: "0.79rem", lineHeight: 1.6, marginBottom: "10px" }}>{p.desc}</p>
+            <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+              {p.tags.map(tag => (
+                <span key={tag} style={{ padding: "2px 9px", borderRadius: "10px", fontSize: "0.67rem", border: `1px solid ${p.coverAccent}44`, color: p.coverAccent, background: `${p.coverAccent}12` }}>{tag}</span>
+              ))}
+            </div>
+            <a href={p.link} target="_blank" rel="noopener noreferrer" style={{ display:"inline-block", marginTop:"12px", color:p.coverAccent, fontSize:"0.76rem", fontWeight:700, textDecoration:"none" }}>{p.linkLabel || "Voir le dépôt GitHub →"}</a>
+            {p.proofLinks?.map(proof => <a key={proof.href} href={proof.href} target="_blank" rel="noopener noreferrer" style={{ display:"block", marginTop:"8px", color:`${p.coverAccent}bb`, fontSize:"0.72rem", textDecoration:"none" }}>📎 {proof.label} →</a>)}
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
 // ─── APP PRINCIPALE ───────────────────────────────────────────────────────────
 export default function PortfolioMobile({ theme = "japon", setTheme = () => {} }) {
   const t = THEMES[theme];
@@ -348,43 +402,82 @@ export default function PortfolioMobile({ theme = "japon", setTheme = () => {} }
       {/* ── PROJETS ── */}
       <Section id="projets">
         <SectionTitle text="Projets" color={t.color} />
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          {PROJECTS.map((p) => (
-            <div key={p.name} style={{
-              background: p.coverBg || "rgba(255,255,255,0.04)", borderRadius: "14px", padding: "16px",
-              border: `1px solid ${p.coverAccent}44`,
-              position: "relative",
-            }}>
-              {p.isFeatured && (
-                <div style={{ position: "absolute", top: "12px", right: "12px", padding: "2px 10px", borderRadius: "4px", background: `${p.coverAccent}30`, border: `1px solid ${p.coverAccent}60`, fontSize: "0.6rem", color: p.coverAccent, fontWeight: 700 }}>
-                  🏢 STAGE
-                </div>
-              )}
-              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
-                <span style={{ fontSize: "1.3rem" }}>{p.icon}</span>
-                <div>
-                  <div style={{ fontWeight: 700, fontSize: "0.88rem" }}>{p.albumTitle}</div>
-                  <div style={{ fontSize: "0.65rem", color: `${p.coverAccent}aa` }}>{p.albumSub}</div>
-                </div>
-              </div>
-              <p style={{ color: "#ffffffaa", fontSize: "0.79rem", lineHeight: 1.6, marginBottom: "10px" }}>{p.desc}</p>
-              <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-                {p.tags.map(tag => (
-                  <span key={tag} style={{ padding: "2px 9px", borderRadius: "10px", fontSize: "0.67rem", border: `1px solid ${p.coverAccent}44`, color: p.coverAccent, background: `${p.coverAccent}12` }}>{tag}</span>
-                ))}
-              </div>
-              <a href={p.link} target="_blank" rel="noopener noreferrer" style={{ display:"inline-block", marginTop:"12px", color:p.coverAccent, fontSize:"0.76rem", fontWeight:700, textDecoration:"none" }}>{p.linkLabel || "Voir le dépôt GitHub →"}</a>
-              {p.proofLinks?.map(proof => <a key={proof.href} href={proof.href} target="_blank" rel="noopener noreferrer" style={{ display:"block", marginTop:"8px", color:`${p.coverAccent}bb`, fontSize:"0.72rem", textDecoration:"none" }}>📎 {proof.label} →</a>)}
+        <MobileProjectsList t={t} />
+      </Section>
+
+      {/* ── LE BTS SIO ── */}
+      <Section id="bts" bg={`${t.color}06`}>
+        <SectionTitle text="Le BTS SIO" color={t.color} />
+        <p style={{ color:"#ffffffaa", fontSize:"0.8rem", lineHeight:1.65, marginBottom:"16px" }}>{BTS_OVERVIEW.desc}</p>
+        <div style={{ display:"grid", gap:"8px", marginBottom:"22px" }}>
+          {[["Diplôme",BTS_OVERVIEW.title],["Niveau",BTS_OVERVIEW.level],["Durée",BTS_OVERVIEW.duration],["Codes RNCP",BTS_OVERVIEW.rncp]].map(([label,value]) => (
+            <div key={label} style={{ padding:"10px", border:`1px solid ${t.color}30`, borderRadius:"9px" }}>
+              <div style={{ color:t.color, fontSize:".6rem", textTransform:"uppercase" }}>{label}</div>
+              <div style={{ fontSize:".82rem", marginTop:"3px" }}>{value}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ color:t.color, fontSize:".78rem", fontWeight:700, margin:"4px 0 10px" }}>Deux options</div>
+        {BTS_OPTIONS.map(o => (
+          <div key={o.code} style={{ padding:"14px", border:`1px solid ${o.current?t.color:t.color+"25"}`, borderRadius:"12px", marginBottom:"10px", background:o.current?`${t.color}10`:"rgba(0,0,0,.2)" }}>
+            <div style={{ color:o.current?t.color:"#fff", fontWeight:900, fontSize:".92rem" }}>{o.code} {o.current && "· mon option"}</div>
+            <div style={{ color:"#ffffffcc", fontSize:".74rem", marginBottom:"6px" }}>{o.name}</div>
+            <div style={{ color:"#ffffffaa", fontSize:".76rem", lineHeight:1.6 }}>{o.desc}</div>
+          </div>
+        ))}
+        <div style={{ color:t.color, fontSize:".78rem", fontWeight:700, margin:"18px 0 10px" }}>Blocs de compétences</div>
+        {BTS_BLOCKS.filter(b => b.id !== "bloc2-slam").map(b => (
+          <div key={b.id} style={{ padding:"12px 14px", border:`1px solid ${t.color}25`, borderRadius:"10px", marginBottom:"8px" }}>
+            <div style={{ color:"#fff", fontWeight:700, fontSize:".8rem", marginBottom:"4px" }}>{b.title}</div>
+            <div style={{ color:"#ffffffaa", fontSize:".74rem", lineHeight:1.55 }}>{b.desc}</div>
+          </div>
+        ))}
+        <div style={{ color:t.color, fontSize:".78rem", fontWeight:700, margin:"18px 0 8px" }}>Les épreuves</div>
+        {BTS_EXAMS.map(e => (
+          <div key={e.code} style={{ display:"flex", justifyContent:"space-between", gap:"10px", borderBottom:`1px solid ${t.color}22`, padding:"8px 0", fontSize:".73rem" }}>
+            <span style={{ color:e.highlight?t.color:"#ffffffbb", fontWeight:e.highlight?700:400 }}>{e.code} — {e.title}</span>
+            <span style={{ color:"#ffffff70", whiteSpace:"nowrap" }}>{e.duree}</span>
+          </div>
+        ))}
+        <div style={{ color:t.color, fontSize:".78rem", fontWeight:700, margin:"18px 0 8px" }}>Mon parcours</div>
+        <div style={{ display:"grid", gap:"8px" }}>
+          {[["École",BTS_TRAINING.school],["Période",BTS_TRAINING.period],["Rythme",BTS_TRAINING.rhythm]].map(([label,value]) => (
+            <div key={label} style={{ padding:"10px", border:`1px solid ${t.color}30`, borderRadius:"9px" }}>
+              <div style={{ color:t.color, fontSize:".6rem", textTransform:"uppercase" }}>{label}</div>
+              <div style={{ fontSize:".8rem", marginTop:"3px" }}>{value}</div>
             </div>
           ))}
         </div>
       </Section>
-      
-      {/* ── DOSSIER BTS ── */}
-      <Section id="bts" bg={`${t.color}06`}>
-        <SectionTitle text="Dossier BTS SIO" color={t.color} />
-        <p style={{ color:"#ffffffaa", fontSize:"0.8rem", lineHeight:1.65, marginBottom:"16px" }}>Les éléments « À joindre » correspondent à tes documents réels ou signés : ils ne doivent pas être inventés.</p>
-        <div style={{ display:"grid", gap:"8px", marginBottom:"20px" }}>{Object.entries(BTS_IDENTITY).map(([label,value]) => <div key={label} style={{ padding:"10px", border:`1px solid ${t.color}30`, borderRadius:"9px" }}><div style={{ color:t.color, fontSize:".6rem", textTransform:"uppercase" }}>{label}</div><div style={{ fontSize:".82rem", marginTop:"3px" }}>{value}</div></div>)}</div>
+
+      {/* ── ÉPREUVE E5/E6 ── */}
+      <Section id="epreuve">
+        <SectionTitle text="Épreuve E5 / E6" color={t.color} />
+        <p style={{ color:"#ffffffaa", fontSize:"0.8rem", lineHeight:1.65, marginBottom:"16px" }}>
+          L'E5 (orale, coeff. 4) s'appuie sur le tableau de synthèse ci-dessous. L'E6 (pratique et orale, coeff. 4) porte sur l'option SISR.
+          Les mentions « À joindre » sont des documents réels à ne pas inventer.
+        </p>
+        <div style={{ display:"grid", gap:"8px", marginBottom:"22px" }}>{Object.entries(EPREUVE_IDENTITY).map(([label,value]) => <div key={label} style={{ padding:"10px", border:`1px solid ${t.color}30`, borderRadius:"9px" }}><div style={{ color:t.color, fontSize:".6rem", textTransform:"uppercase" }}>{label}</div><div style={{ fontSize:".82rem", marginTop:"3px" }}>{value}</div></div>)}</div>
+
+        <div style={{ color:t.color, fontSize:".78rem", fontWeight:700, margin:"4px 0 10px" }}>Référentiel de compétences</div>
+        {COMPETENCES_REFERENTIEL.map(c => (
+          <div key={c.id} style={{ padding:"12px 14px", border:`1px solid ${t.color}25`, borderRadius:"10px", marginBottom:"8px" }}>
+            <div style={{ color:"#fff", fontWeight:700, fontSize:".8rem", marginBottom:"6px" }}>{c.title}</div>
+            {c.items.map(it => <div key={it} style={{ color:"#ffffffaa", fontSize:".72rem", marginTop:"4px", lineHeight:1.5 }}>▸ {it}</div>)}
+          </div>
+        ))}
+
+        <div style={{ color:t.color, fontSize:".78rem", fontWeight:700, margin:"18px 0 10px" }}>Tableau de synthèse</div>
+        <a href={TABLEAU_SYNTHESE_FILE.href} target="_blank" rel="noopener noreferrer"
+          style={{ display:"flex", alignItems:"center", gap:"10px", padding:"14px 16px", borderRadius:"12px", border:`1px solid ${t.color}45`, background:`${t.color}0c`, textDecoration:"none", marginBottom:"6px" }}>
+          <span style={{ fontSize:"1.4rem" }}>📊</span>
+          <div>
+            <div style={{ color:"#fff", fontWeight:700, fontSize:".84rem" }}>{TABLEAU_SYNTHESE_FILE.label}</div>
+            <div style={{ color:t.color, fontSize:".72rem", marginTop:"2px" }}>Télécharger le fichier Excel →</div>
+          </div>
+        </a>
+
+        <div style={{ color:t.color, fontSize:".78rem", fontWeight:700, margin:"20px 0 10px" }}>Fiches de situation</div>
         {BTS_SITUATIONS.map(s => <div key={s.id} style={{ padding:"14px", border:`1px solid ${t.color}35`, borderRadius:"12px", marginBottom:"12px", background:"rgba(0,0,0,.2)" }}><div style={{ color:"#fff", fontWeight:700, fontSize:".9rem" }}>{s.title}</div><div style={{ color:t.color, fontSize:".68rem", margin:"5px 0 10px" }}>{s.period}</div><div style={{ color:"#ffffffbb", fontSize:".76rem", lineHeight:1.6 }}>{s.context}</div><div style={{ color:t.color, fontSize:".72rem", fontWeight:700, marginTop:"12px" }}>Preuves à associer</div>{s.evidence.map(x => <div key={x} style={{ color:"#ffffffaa", fontSize:".72rem", marginTop:"5px" }}>• {x}</div>)}</div>)}
         <div style={{ color:t.color, fontSize:".78rem", fontWeight:700, margin:"18px 0 8px" }}>Contrôle avant dépôt</div>{BTS_CHECKLIST.map(([item,status]) => <div key={item} style={{ display:"flex", justifyContent:"space-between", gap:"10px", borderBottom:`1px solid ${t.color}22`, padding:"9px 0", fontSize:".72rem" }}><span style={{ color:"#ffffffbb" }}>{item}</span><span style={{ color:t.color, whiteSpace:"nowrap" }}>{status}</span></div>)}
       </Section>
