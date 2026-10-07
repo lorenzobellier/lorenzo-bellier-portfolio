@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { THEMES } from "./data/themes";
-import { PROJECTS, PROJECT_CATEGORIES } from "./data/projects";
+import { PROJECTS } from "./data/projects";
 import { DIPLOMAS } from "./data/diplomas";
 import { SHELVES } from "./data/skills";
 import { VEILLE } from "./data/veille";
