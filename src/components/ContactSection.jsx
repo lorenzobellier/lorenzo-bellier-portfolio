@@ -117,7 +117,7 @@ function ContactForm({ theme }) {
             fontWeight: 700, letterSpacing: "0.05em", cursor: "pointer", transition: "all 0.2s" }}
             onMouseEnter={e => { e.currentTarget.style.background = `${t.color}30`; e.currentTarget.style.boxShadow = `0 0 20px ${t.color}50`; }}
             onMouseLeave={e => { e.currentTarget.style.background = `${t.color}18`; e.currentTarget.style.boxShadow = "none"; }}>
-            ✉ Envoyer le message
+             Envoyer le message
           </button>
         </form>
       )}
@@ -174,7 +174,7 @@ export default function ContactSection({ theme }) {
         <div style={{ width:"8px", height:"8px", borderRadius:"50%", background:"#00ff88", boxShadow:"0 0 8px #00ff88", animation:"blink 1.5s ease-in-out infinite", flexShrink:0 }} />
         <span style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.72rem", color:`${t.color}80`, letterSpacing:"0.2em", textTransform:"uppercase" }}>DISPONIBLE · Cherche alternance · Paris & Île-de-France</span>
         <div style={{ marginLeft:"auto", display:"flex", gap:"10px" }}>
-          {["🎬","⭐","🔔"].map((e,i) => <span key={i} style={{ fontSize:"0.9rem", opacity:0.6 }}>{e}</span>)}
+          {["","",""].map((e,i) => <span key={i} style={{ fontSize:"0.9rem", opacity:0.6 }}>{e}</span>)}
         </div>
       </div>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))", gap:"18px" }}>

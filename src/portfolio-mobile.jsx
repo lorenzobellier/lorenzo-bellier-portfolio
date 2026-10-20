@@ -13,14 +13,14 @@ function BurgerNav({ theme, t, setTheme }) {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { id:"home",     label:"🏠 Accueil" },
-    { id:"about",    label:"👤 À Propos" },
-    { id:"diplomes", label:"📚 Diplômes" },
-    { id:"skills",   label:"📜 Compétences" },
-    { id:"projets",  label:"⚔️ Projets" },
-    { id:"bts",      label:"📋 Dossier BTS" },
-    { id:"veille",   label:"🃏 Veille" },
-    { id:"contact",  label:"✉️ Contact" },
+    { id:"home",     label:"Accueil" },
+    { id:"about",    label:"À Propos" },
+    { id:"diplomes", label:"Diplômes" },
+    { id:"skills",   label:"Compétences" },
+    { id:"projets",  label:"Projets" },
+    { id:"bts",      label:"Dossier BTS" },
+    { id:"veille",   label:"Veille" },
+    { id:"contact",  label:"Contact" },
   ];
 
   const scrollTo = (id) => {
@@ -65,8 +65,12 @@ function BurgerNav({ theme, t, setTheme }) {
         width: "100%", maxWidth: "480px", zIndex: 999,
         background: "rgba(0,0,0,0.96)", backdropFilter: "blur(20px)",
         borderBottom: open ? `1px solid ${t.color}28` : "none",
-        maxHeight: open ? "400px" : "0px",
-        overflow: "hidden",
+        maxHeight: open ? "min(80dvh, 700px)" : "0px",
+        overflowX: "hidden",
+        overflowY: open ? "auto" : "hidden",
+        WebkitOverflowScrolling: "touch",
+        overscrollBehavior: "contain",
+        touchAction: "pan-y",
         transition: "max-height 0.35s cubic-bezier(0.4,0,0.2,1)",
       }}>
         <div style={{ padding: "10px 0" }}>
@@ -278,11 +282,11 @@ export default function PortfolioMobile({ theme = "japon", setTheme = () => {} }
           <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
             <button onClick={() => document.getElementById("skills")?.scrollIntoView({ behavior: "smooth" })}
               style={{ padding: "10px 20px", borderRadius: "24px", background: t.color, border: "none", color: "#000", fontWeight: 700, fontSize: "0.8rem", fontFamily: "'Noto Serif JP',serif", cursor: "pointer" }}>
-              Compétences 📜
+              Compétences
             </button>
             <button onClick={() => document.getElementById("projets")?.scrollIntoView({ behavior: "smooth" })}
               style={{ padding: "10px 20px", borderRadius: "24px", background: "transparent", border: `1.5px solid ${t.color}`, color: t.color, fontSize: "0.8rem", fontFamily: "'Noto Serif JP',serif", cursor: "pointer" }}>
-              Projets ⚔️
+              Projets
             </button>
           </div>
         </div>
@@ -293,12 +297,12 @@ export default function PortfolioMobile({ theme = "japon", setTheme = () => {} }
         <SectionTitle text="À Propos" color={t.color} />
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           {[
-            { icon: "🎓", label: "Formation", val: "BTS SIO SISR — My Digital School, Paris (2025–2027)" },
-            { icon: "🔍", label: "Objectif", val: "Alternance cybersécurité / réseau / sysadmin" },
-            { icon: "🏢", label: "Stage", val: "Développeur Web — VANDJI CONSULTING (Mai–Août 2026)" },
-            { icon: "📍", label: "Lieu", val: "Paris, Île-de-France" },
-            { icon: "📖", label: "Passions", val: "Manga, anime VO, K-drama, manhwa, light novels, donghua" },
-            { icon: "🐉", label: "Projet", val: "Apprendre le japonais · Voyager en Asie 🇯🇵 🇰🇷" },
+            { label: "Formation", val: "BTS SIO SISR — My Digital School, Paris (2025–2027)" },
+            { label: "Objectif", val: "Alternance cybersécurité / réseau / sysadmin" },
+            { label: "Stage", val: "Développeur Web — VANDJI CONSULTING (Mai–Août 2026)" },
+            { label: "Lieu", val: "Paris, Île-de-France" },
+            { label: "Passions", val: "Manga, anime VO, K-drama, manhwa, light novels, donghua" },
+            { label: "Projet", val: "Apprendre le japonais · Voyager en Asie 🇯🇵 🇰🇷" },
           ].map(({ icon, label, val }) => (
             <div key={label} style={{ background: "rgba(255,255,255,0.05)", borderRadius: "12px", padding: "13px 15px", border: `1px solid ${t.color}22` }}>
               <div style={{ fontSize: "0.68rem", color: `${t.color}bb`, textTransform: "uppercase", marginBottom: "4px", letterSpacing: "0.1em" }}>{icon} {label}</div>
@@ -385,7 +389,7 @@ export default function PortfolioMobile({ theme = "japon", setTheme = () => {} }
       <Section id="bts" bg={`${t.color}06`}>
         <SectionTitle text="Dossier BTS SIO" color={t.color} />
         <p style={{ color:"#ffffffaa", fontSize:"0.8rem", lineHeight:1.65, marginBottom:"16px" }}>Les éléments « À joindre » correspondent à tes documents réels ou signés : ils ne doivent pas être inventés.</p>
-        <div style={{ display:"grid", gap:"8px", marginBottom:"20px" }}>{Object.entries(BTS_IDENTITY).map(([label,value]) => <div key={label} style={{ padding:"10px", border:`1px solid ${t.color}30`, borderRadius:"9px" }}><div style={{ color:t.color, fontSize:".6rem", textTransform:"uppercase" }}>{label}</div><div style={{ fontSize:".82rem", marginTop:"3px" }}>{value}</div></div>)}</div>
+        <div style={{ display:"grid", gap:"8px", marginBottom:"20px" }}>{Object.entries(EPREUVE_IDENTITY).map(([label,value]) => <div key={label} style={{ padding:"10px", border:`1px solid ${t.color}30`, borderRadius:"9px" }}><div style={{ color:t.color, fontSize:".6rem", textTransform:"uppercase" }}>{label}</div><div style={{ fontSize:".82rem", marginTop:"3px" }}>{value}</div></div>)}</div>
         {BTS_SITUATIONS.map(s => <div key={s.id} style={{ padding:"14px", border:`1px solid ${t.color}35`, borderRadius:"12px", marginBottom:"12px", background:"rgba(0,0,0,.2)" }}><div style={{ color:"#fff", fontWeight:700, fontSize:".9rem" }}>{s.title}</div><div style={{ color:t.color, fontSize:".68rem", margin:"5px 0 10px" }}>{s.period}</div><div style={{ color:"#ffffffbb", fontSize:".76rem", lineHeight:1.6 }}>{s.context}</div><div style={{ color:t.color, fontSize:".72rem", fontWeight:700, marginTop:"12px" }}>Preuves à associer</div>{s.evidence.map(x => <div key={x} style={{ color:"#ffffffaa", fontSize:".72rem", marginTop:"5px" }}>• {x}</div>)}</div>)}
         <div style={{ color:t.color, fontSize:".78rem", fontWeight:700, margin:"18px 0 8px" }}>Contrôle avant dépôt</div>{BTS_CHECKLIST.map(([item,status]) => <div key={item} style={{ display:"flex", justifyContent:"space-between", gap:"10px", borderBottom:`1px solid ${t.color}22`, padding:"9px 0", fontSize:".72rem" }}><span style={{ color:"#ffffffbb" }}>{item}</span><span style={{ color:t.color, whiteSpace:"nowrap" }}>{status}</span></div>)}
       </Section>
@@ -408,7 +412,7 @@ export default function PortfolioMobile({ theme = "japon", setTheme = () => {} }
                 </div>
               </div>
               <div style={{ fontSize: "0.72rem", color: `${v.color}cc`, marginBottom: "10px", padding: "6px 10px", background: `${v.color}10`, borderRadius: "6px" }}>
-                📊 {v.stat}
+                 {v.stat}
               </div>
               <div style={{ fontSize: "0.76rem", color: "#ffffffbb", lineHeight: 1.6, marginBottom: "10px" }}>{v.synthesis}</div>
               <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
@@ -426,10 +430,10 @@ export default function PortfolioMobile({ theme = "japon", setTheme = () => {} }
         <SectionTitle text="Contact" color={t.color} />
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           {[
-            { icon: "📧", label: "Email", val: "lorenzobellier@gmail.com", href: "mailto:lorenzobellier@gmail.com", color: "#FF6B9D" },
-            { icon: "🐙", label: "GitHub", val: "github.com/LorenzoBellier", href: "https://github.com/LorenzoBellier", color: "#B04AFF" },
-            { icon: "💼", label: "LinkedIn", val: "Lorenzo Bellier", href: "https://www.linkedin.com/in/LorenzoBellier", color: "#00E5FF" },
-            { icon: "📞", label: "Téléphone", val: "06 11 67 41 50", href: "tel:+33611674150", color: "#FFD700" },
+            { label: "Email", val: "lorenzobellier@gmail.com", href: "mailto:lorenzobellier@gmail.com", color: "#FF6B9D" },
+            { label: "GitHub", val: "github.com/LorenzoBellier", href: "https://github.com/LorenzoBellier", color: "#B04AFF" },
+            { label: "LinkedIn", val: "Lorenzo Bellier", href: "https://www.linkedin.com/in/LorenzoBellier", color: "#00E5FF" },
+            { label: "Téléphone", val: "06 11 67 41 50", href: "tel:+33611674150", color: "#FFD700" },
           ].map(({ icon, label, val, href, color }) => (
             <a key={label} href={href}
               target={href.startsWith("mailto") || href.startsWith("tel") ? "_self" : "_blank"}

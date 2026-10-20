@@ -71,14 +71,14 @@ export default function DiplomasSection({ theme }) {
           <div style={{ background:`linear-gradient(135deg,${active.coverTop})`, border:`1px solid ${active.stripColor}35`, borderRadius:"0 0 10px 10px", padding:"28px 32px", animation:"fadeIn 0.35s ease" }}>
             <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"32px" }}>
               <div style={{ borderRight:`1px solid ${active.stripColor}18`, paddingRight:"28px" }}>
-                <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.62rem", color:`${active.stripColor}55`, letterSpacing:"0.3em", textTransform:"uppercase", marginBottom:"10px" }}>📖 {active.mangaGenre} · {active.mangaChapters}</div>
+                <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.62rem", color:`${active.stripColor}55`, letterSpacing:"0.3em", textTransform:"uppercase", marginBottom:"10px" }}> {active.mangaGenre} · {active.mangaChapters}</div>
                 <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"1.4rem", fontWeight:900, color:active.stripColor, marginBottom:"4px", textShadow:`0 0 15px ${active.stripColor}50` }}>{active.mangaTitle}</div>
                 <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.75rem", color:`${active.stripColor}70`, letterSpacing:"0.15em", marginBottom:"16px" }}>{active.mangaSubtitle}</div>
                 <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.82rem", color:"#ffffffaa", lineHeight:1.9, marginBottom:"16px" }}>{active.desc}</div>
                 <div style={{ padding:"10px 14px", borderRadius:"6px", background:`${active.stripColor}08`, border:`1px solid ${active.stripColor}25`, fontFamily:"'Noto Serif JP',serif", fontSize:"0.8rem", color:`${active.stripColor}cc`, fontStyle:"italic", lineHeight:1.8 }}>{active.synopsis}</div>
               </div>
               <div>
-                <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.62rem", color:`${active.stripColor}55`, letterSpacing:"0.3em", textTransform:"uppercase", marginBottom:"12px" }}>📋 Fiche technique</div>
+                <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.62rem", color:`${active.stripColor}55`, letterSpacing:"0.3em", textTransform:"uppercase", marginBottom:"12px" }}> Fiche technique</div>
                 {[{ label:"Titre complet", val:active.full }, { label:"École", val:active.school }, { label:"Volume", val:active.mangaVol }, { label:"Statut", val:active.mangaStatus }].map((row,ri) => (
                   <div key={ri} style={{ display:"flex", gap:"10px", marginBottom:"10px", padding:"8px 12px", borderRadius:"6px", background:`${active.stripColor}06`, border:`1px solid ${active.stripColor}18` }}>
                     <span style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.7rem", color:`${active.stripColor}70`, minWidth:"90px" }}>{row.label}</span>

@@ -15,8 +15,24 @@ import PortfolioMobile from "./portfolio-mobile.jsx"; // Import du fichier mobil
 import "./index.css";
 
 export default function App() {
-  const [theme, setTheme]     = useState("japon");
-  const [section, setSection] = useState("home");
+  const validSections = ["home", "about", "diplomes", "skills", "projets", "veille", "bts", "epreuve", "contact"];
+  const readInitial = (key, fallback, allowed) => {
+    try {
+      const fromHash = key === "section" ? window.location.hash.replace(/^#/, "") : "";
+      const saved = window.localStorage.getItem(`portfolio-${key}`);
+      const value = fromHash || saved;
+      return value && (!allowed || allowed.includes(value)) ? value : fallback;
+    } catch { return fallback; }
+  };
+  const [theme, setTheme] = useState(() => readInitial("theme", "japon", Object.keys(THEMES)));
+  const [section, setSectionState] = useState(() => readInitial("section", "home", validSections));
+  const setSection = (next) => {
+    setSectionState(next);
+    try {
+      window.localStorage.setItem("portfolio-section", next);
+      if (window.location.hash !== `#${next}`) window.history.replaceState(null, "", `#${next}`);
+    } catch { /* stockage indisponible : la navigation reste fonctionnelle */ }
+  };
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   
   const t = THEMES[theme];
@@ -28,9 +44,9 @@ export default function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleTheme = (k) => { 
-    setTheme(k); 
-    setSection("home"); 
+  const handleTheme = (k) => {
+    setTheme(k);
+    try { window.localStorage.setItem("portfolio-theme", k); } catch { /* stockage facultatif */ }
   };
 
   // --- RENDU MOBILE ---

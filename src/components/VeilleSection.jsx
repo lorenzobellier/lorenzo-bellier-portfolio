@@ -2,22 +2,23 @@ import { useState } from "react";
 import { THEMES } from "../data/themes";
 import { VEILLE } from "../data/veille";
 import { SectionTitle } from "./UI";
+import RssVeille from "./RssVeille";
 
 function VeilleCard({ v, isFlipped, onClick }) {
   const [hov, setHov] = useState(false);
   return (
     <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} onClick={onClick}
-      style={{ width:"200px", minHeight:"290px", cursor:"pointer", perspective:"1000px",
+      style={{ width:"200px", height:"290px", minHeight:0, cursor:"pointer", perspective:"1000px", overflow:"visible",
         transform: hov && !isFlipped ? "translateY(-8px) scale(1.03)" : "none",
         transition:"transform 0.3s cubic-bezier(0.34,1.56,0.64,1)", position:"relative" }}>
-      <div style={{ width:"100%", minHeight:"290px", transformStyle:"preserve-3d",
+      <div style={{ width:"100%", height:"290px", minHeight:0, transformStyle:"preserve-3d",
         transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
         transition:"transform 0.6s cubic-bezier(0.4,0,0.2,1)", position:"relative" }}>
         {/* FRONT */}
         <div style={{ position:"absolute", inset:0, backfaceVisibility:"hidden",
           background:`linear-gradient(160deg,#0d0018,#1a0030,${v.color}18)`,
           border:`2px solid ${v.color}70`, borderRadius:"12px", padding:"12px",
-          display:"flex", flexDirection:"column", gap:"8px", minHeight:"290px",
+          display:"flex", flexDirection:"column", gap:"8px", height:"290px", boxSizing:"border-box", overflowY:"auto",
           boxShadow: hov ? `0 0 30px ${v.color}50` : `0 0 10px ${v.color}20` }}>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
             <span style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.48rem", fontWeight:900, color:v.rarityColor, letterSpacing:"0.15em", padding:"2px 7px", borderRadius:"3px", background:`${v.rarityColor}18`, border:`1px solid ${v.rarityColor}40` }}>{v.rarity}</span>
@@ -28,7 +29,7 @@ function VeilleCard({ v, isFlipped, onClick }) {
             <span style={{ fontSize:"3rem", filter:`drop-shadow(0 0 18px ${v.color})`, zIndex:1 }}>{v.icon}</span>
           </div>
           <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.85rem", fontWeight:900, color:v.color, lineHeight:1.3 }}>{v.title}</div>
-          <div style={{ padding:"6px 8px", borderRadius:"6px", background:`${v.color}10`, border:`1px solid ${v.color}25`, fontFamily:"'Noto Serif JP',serif", fontSize:"0.55rem", color:`${v.color}cc`, lineHeight:1.5 }}>📊 {v.stat}</div>
+          <div style={{ padding:"6px 8px", borderRadius:"6px", background:`${v.color}10`, border:`1px solid ${v.color}25`, fontFamily:"'Noto Serif JP',serif", fontSize:"0.55rem", color:`${v.color}cc`, lineHeight:1.5 }}> {v.stat}</div>
           <div style={{ display:"flex", flexWrap:"wrap", gap:"4px" }}>
             {v.tools.map(t => <span key={t} style={{ padding:"2px 6px", borderRadius:"3px", background:`${v.color}15`, border:`1px solid ${v.color}30`, color:v.color, fontSize:"0.5rem", fontFamily:"'Noto Serif JP',serif" }}>{t}</span>)}
           </div>
@@ -38,9 +39,9 @@ function VeilleCard({ v, isFlipped, onClick }) {
         <div style={{ position:"absolute", inset:0, backfaceVisibility:"hidden", transform:"rotateY(180deg)",
           background:`linear-gradient(160deg,#0a0020,#150035,${v.color}12)`,
           border:`2px solid ${v.color}70`, borderRadius:"12px", padding:"12px",
-          display:"flex", flexDirection:"column", gap:"7px", minHeight:"290px", overflowY:"auto",
+          display:"flex", flexDirection:"column", gap:"7px", height:"290px", boxSizing:"border-box", overflowY:"auto", overscrollBehavior:"contain",
           boxShadow:`0 0 30px ${v.color}40` }}>
-          <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.62rem", fontWeight:900, color:v.color }}>📰 ARTICLES LUS</div>
+          <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.62rem", fontWeight:900, color:v.color }}> ARTICLES LUS</div>
           {v.articles.map((a, i) => (
             <div key={i} style={{ padding:"5px 7px", borderRadius:"5px", background:`${v.color}08`, border:`1px solid ${v.color}20` }}>
               <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.54rem", color:"#ffffffdd", lineHeight:1.4, marginBottom:"2px" }}>{a.title}</div>
@@ -82,6 +83,7 @@ export default function VeilleSection({ theme }) {
         </div>
         <div style={{ position:"absolute", bottom:0, left:0, right:0, height:"12px", background:"linear-gradient(90deg,#1a0040,#3d0080,#2d0060,#3d0080,#1a0040)", borderRadius:"0 0 16px 16px", borderTop:"2px solid rgba(150,100,255,0.15)" }} />
       </div>
+      <RssVeille theme={theme} />
       <div style={{ marginTop:"28px", padding:"20px 26px", borderRadius:"12px", border:`2px dashed ${t.color}30`, background:`${t.color}04`, display:"flex", flexWrap:"wrap", gap:"12px", alignItems:"center" }}>
         <span style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.78rem", color:t.color, fontWeight:700 }}>📡 Sources :</span>
         {["ANSSI","CERT-FR","ENISA","OWASP","Kaspersky","The Verge","McKinsey","APEC"].map(s => (

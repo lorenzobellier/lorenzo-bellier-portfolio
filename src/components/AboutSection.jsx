@@ -51,12 +51,12 @@ export default function AboutSection({ theme }) {
             <div style={{ padding:"20px 18px", borderTop:`2px solid ${t.color}40` }}>
               <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"1rem", fontWeight:900, color:t.color, marginBottom:"14px" }}>Lorenzo Bellier</div>
               {[
-                { label:"Âge",       val:`${new Date().getFullYear() - 2006} ans`,  icon:"🎂" },
-                { label:"Ville",     val:"Paris, France",          icon:"🗼" },
-                { label:"Formation", val:"BTS SIO SISR",           icon:"🎓" },
-                { label:"École",     val:"My Digital School",      icon:"🏫" },
-                { label:"Statut",    val:"Cherche alternance",     icon:"🔍" },
-                { label:"Objectif",  val:"Cybersécurité + Asie",   icon:"🐉" },
+                { label:"Âge",       val:`${new Date().getFullYear() - 2006} ans` },
+                { label:"Ville",     val:"Paris, France" },
+                { label:"Formation", val:"BTS SIO SISR" },
+                { label:"École",     val:"My Digital School" },
+                { label:"Statut",    val:"Cherche alternance" },
+                { label:"Objectif",  val:"Cybersécurité + Asie" },
               ].map((item,i) => (
                 <div key={i} style={{ display:"flex", gap:"8px", alignItems:"center", marginBottom:"8px", padding:"6px 10px", borderRadius:"6px", background:`${t.color}06`, border:`1px solid ${t.color}18` }}>
                   <span style={{ fontSize:"0.9rem" }}>{item.icon}</span>

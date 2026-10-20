@@ -83,24 +83,24 @@ export default function ProjectsSection({ theme }) {
                 <span style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"1.5rem", fontWeight:900, color:active.coverAccent }}>{active.albumTitle}</span>
                 <span style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.75rem", color:`${active.coverAccent}70` }}>{active.albumSub} · {active.year}</span>
               </div>
-              <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.78rem", color:`${active.coverAccent}80`, letterSpacing:"0.15em", marginBottom:"14px", textTransform:"uppercase" }}>🐙 {active.name}</div>
+              <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.78rem", color:`${active.coverAccent}80`, letterSpacing:"0.15em", marginBottom:"14px", textTransform:"uppercase" }}> {active.name}</div>
               <p style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.86rem", color:"#ffffffaa", lineHeight:1.8, marginBottom:"16px" }}>{active.desc}</p>
               <div style={{ display:"flex", gap:"6px", flexWrap:"wrap", marginBottom:"16px" }}>
                 {active.tags.map(tag => <span key={tag} style={{ padding:"3px 10px", borderRadius:"12px", background:`${active.coverAccent}18`, border:`1px solid ${active.coverAccent}40`, color:active.coverAccent, fontSize:"0.71rem", fontFamily:"'Noto Serif JP',serif" }}>{tag}</span>)}
               </div>
               <a href={active.link} target="_blank" rel="noopener noreferrer"
                 style={{ display:"inline-flex", alignItems:"center", gap:"6px", padding:"9px 18px", borderRadius:"20px", border:`1px solid ${active.coverAccent}`, color:active.coverAccent, fontFamily:"'Noto Serif JP',serif", fontSize:"0.8rem", textDecoration:"none", background:`${active.coverAccent}12` }}>
-                {active.link?.includes("github.com") ? "🐙" : "📎"} {active.linkLabel || "Voir sur GitHub"} →
+                {active.link?.includes("github.com") ? "" : ""} {active.linkLabel || "Voir sur GitHub"} →
               </a>
               {active.proofLinks?.map(proof => (
                 <a key={proof.href} href={proof.href} target="_blank" rel="noopener noreferrer"
                   style={{ display:"block", marginTop:"10px", color:`${active.coverAccent}bb`, fontFamily:"'Noto Serif JP',serif", fontSize:"0.76rem", textDecoration:"none" }}>
-                  📎 {proof.label} →
+                   {proof.label} →
                 </a>
               ))}
             </div>
             <div>
-              <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.75rem", color:`${active.coverAccent}70`, letterSpacing:"0.2em", textTransform:"uppercase", marginBottom:"14px" }}>🎵 Tracklist</div>
+              <div style={{ fontFamily:"'Noto Serif JP',serif", fontSize:"0.75rem", color:`${active.coverAccent}70`, letterSpacing:"0.2em", textTransform:"uppercase", marginBottom:"14px" }}> Tracklist</div>
               <div style={{ display:"flex", flexDirection:"column", gap:"6px" }}>
                 {active.tracks.map((track, ti) => (
                   <div key={ti} style={{ display:"flex", alignItems:"center", gap:"12px", padding:"8px 12px", borderRadius:"6px", background:`${active.coverAccent}06`, border:`1px solid ${active.coverAccent}18`, transition:"all 0.2s" }}

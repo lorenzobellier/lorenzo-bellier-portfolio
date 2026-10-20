@@ -1,7 +1,7 @@
 export const SHELVES = [
   {
     floor: "1er Étage", floorJP: "一階",
-    category: "Développement Web", icon: "⚙️", color: "#FF6B9D",
+    category: "Développement Web", color: "#FF6B9D",
     scrolls: [
       { id:"html",   name:"HTML5",      icon:"📄", levelName:"Intermédiaire", levelColor:"#FFD700", desc:"Structure sémantique, balises, formulaires, accessibilité de base.", tags:["Sémantique","Forms","SEO"], color:"#FF6B4A" },
       { id:"css",    name:"CSS3",        icon:"🎨", levelName:"Intermédiaire", levelColor:"#FFD700", desc:"Flexbox, Grid, animations CSS, responsive design.", tags:["Flexbox","Grid","Animations"], color:"#FF6B9D" },
@@ -14,7 +14,7 @@ export const SHELVES = [
   },
   {
     floor: "2ème Étage", floorJP: "二階",
-    category: "Systèmes & Réseau", icon: "🛡️", color: "#00E5FF",
+    category: "Systèmes & Réseau", color: "#00E5FF",
     scrolls: [
       { id:"linux",   name:"Linux",          icon:"🐧", levelName:"Notions", levelColor:"#FF6B9D", desc:"Administration système Linux (Debian/Ubuntu), shell, permissions, utilisateurs. Projet GitHub + stage.", tags:["Shell","Debian","Ubuntu"], color:"#00E5FF" },
       { id:"windows", name:"Windows Server", icon:"🪟", levelName:"Notions", levelColor:"#FF6B9D", desc:"Installation, gestion des utilisateurs et des services. Vu en cours BTS SIO.", tags:["WinServer","AD","Services"], color:"#00AAFF" },
@@ -26,13 +26,13 @@ export const SHELVES = [
   },
   {
     floor: "3ème Étage", floorJP: "三階",
-    category: "Langues & Culture", icon: "🌏", color: "#FFD700",
+    category: "Langues & Culture", color: "#FFD700",
     scrolls: [
       { id:"fr", name:"Français", icon:"🇫🇷", levelName:"Langue maternelle", levelColor:"#00FFB3", desc:"Langue maternelle. Expression écrite et orale fluide, niveau C2.", tags:["Natif","C2"], color:"#4A90E2" },
       { id:"en", name:"Anglais",  icon:"🇬🇧", levelName:"Intermédiaire B1",  levelColor:"#FFD700", desc:"Bon niveau à l'écrit et en lecture technique. Contenu consommé en VO.", tags:["B1","Technique","VO"], color:"#FF6B4A" },
-      { id:"jp", name:"Japonais", icon:"🇯🇵", levelName:"Débutant A1",       levelColor:"#FF6B9D", desc:"Hiragana/katakana en cours. Immersion quotidienne via anime VO, mangas.", tags:["A1","Hiragana","En cours"], color:"#FF6B9D" },
-      { id:"kr", name:"Coréen",   icon:"🇰🇷", levelName:"Débutant A1",       levelColor:"#FF6B9D", desc:"Bases de l'alphabet hangeul. Immersion passive via K-pop et K-drama.", tags:["A1","Hangeul","Passif"], color:"#00E5FF" },
-      { id:"zh", name:"Chinois",  icon:"🇨🇳", levelName:"Initiation",        levelColor:"#CC77FF", desc:"Quelques caractères via manhua et donghua. Curiosité culturelle forte.", tags:["Hanzi","Initiation"], color:"#FFD700" },
+      { id:"jp", name:"Japonais", icon:"🇯🇵", levelName:"Initiation",       levelColor:"#FF6B9D", desc:"Hiragana/katakana en cours. Immersion quotidienne via anime VO, mangas.", tags:["A1","Hiragana","Passif"], color:"#FF6B9D" },
+      { id:"kr", name:"Coréen",   icon:"🇰🇷", levelName:"Débutant A1",       levelColor:"#FF6B9D", desc:"Bases de l'alphabet hangeul. Immersion passive via K-pop et K-drama.", tags:["A1","Hangeul","En cours"], color:"#00E5FF" },
+      { id:"zh", name:"Chinois",  icon:"🇨🇳", levelName:"Initiation",        levelColor:"#CC77FF", desc:"Quelques caractères via manhua et donghua. Curiosité culturelle forte.", tags:["Hanzi","Initiation","Passif"], color:"#FFD700" },
     ],
   },
 ];

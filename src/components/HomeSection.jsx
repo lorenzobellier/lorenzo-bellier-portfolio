@@ -4,7 +4,7 @@ import { THEMES } from "../data/themes";
 export default function HomeSection({ theme, setSection }) {
   const t = THEMES[theme];
   const [typed, setTyped] = useState("");
-  const full = "Étudiant BTS SIO SISR · Administration systèmes & réseaux · Passionné de cybersécurité 🔐";
+  const full = "Étudiant BTS SIO SISR · Administration systèmes & réseaux · Passionné de cybersécurité ";
 
   useEffect(() => {
     let i = 0; setTyped("");
@@ -41,7 +41,7 @@ export default function HomeSection({ theme, setSection }) {
       </div>
 
       <div style={{ display:"flex", gap:"11px", flexWrap:"wrap", justifyContent:"center", zIndex:1 }}>
-        {[{label:"Bibliothèque 📜", s:"skills", solid:true},{label:"Mes projets ⚔️", s:"projets", solid:false},{label:"Dossier BTS 📋", s:"bts", solid:false}].map(({label,s,solid}) => (
+        {[{label:"Bibliothèque ", s:"skills", solid:true},{label:"Mes projets ", s:"projets", solid:false},{label:"Dossier BTS ", s:"bts", solid:false}].map(({label,s,solid}) => (
           <button key={s} onClick={() => setSection(s)}
             style={{ padding:"11px 24px", borderRadius:"30px", border:`2px solid ${t.color}`, background:solid?t.color:"transparent", color:solid?"#000":t.color, fontFamily:"'Noto Serif JP',serif", fontSize:"0.87rem", fontWeight:solid?700:400, cursor:"pointer", letterSpacing:"0.08em", transition:"all 0.3s", boxShadow:solid?`0 0 22px ${t.glow}`:"none" }}
             onMouseEnter={e=>{e.target.style.transform="translateY(-3px) scale(1.03)";e.target.style.boxShadow=`0 10px 28px ${t.glow}`;}}
